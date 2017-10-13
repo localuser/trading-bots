@@ -1,0 +1,291 @@
+﻿<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <block type="trade" id="xgH69|xFn9=70w.*3Vo@" x="0" y="0">
+    <field name="MARKET_LIST">volidx</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">R_100</field>
+    <field name="TRADETYPECAT_LIST">callput</field>
+    <field name="TRADETYPE_LIST">risefall</field>
+    <field name="TYPE_LIST">both</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">FALSE</field>
+    <field name="RESTARTONERROR">TRUE</field>
+    <statement name="INITIALIZATION">
+      <block type="variables_set" id=",STm[nr?,PZ?+DVLI_4p">
+        <field name="VAR">start</field>
+        <value name="VALUE">
+          <block type="text" id="cT3AUeQmRHtDArT:YfPh">
+            <field name="TEXT">true</field>
+          </block>
+        </value>
+        <next>
+          <block type="notify" id="J2-)*?7CgUFV7WwJV}]r">
+            <field name="NOTIFICATION_TYPE">success</field>
+            <field name="NOTIFICATION_SOUND">silent</field>
+            <value name="MESSAGE">
+              <shadow type="text" id="q3z[^sYF`$YC6`.*s04t">
+                <field name="TEXT">abc</field>
+              </shadow>
+              <block type="text_join" id="T~3`OYilI4~@.,~=$t~2">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="jwDcw)j,qw~aiwsN0j^}">
+                    <field name="TEXT">Start bot at </field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="epoch" id="LRIe(w-aKFW(OedXj12}"></block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="procedures_callnoreturn" id="Q0+hq~yPWR)c(qsac3UE">
+                <mutation name="(1) FRUITFELLA's Management">
+                  <arg name="_Target_Profit_"></arg>
+                  <arg name="_Stop_Loss_"></arg>
+                  <arg name="_First_Stake_"></arg>
+                  <arg name="_Martingale_Factor_"></arg>
+                  <arg name="_Martingale_Level_"></arg>
+                  <arg name="_Martingale_Start_After_"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="math_number" id="Gxlpl%R:;USHJr1CPPi0">
+                    <field name="NUM">100</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="math_number" id="jb[NXvn`Xg_w=%KQW0%M">
+                    <field name="NUM">100</field>
+                  </block>
+                </value>
+                <value name="ARG2">
+                  <block type="math_number" id="Ha`GP.~w-{TJ3?2%WR,@">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <value name="ARG3">
+                  <block type="math_number" id="C/`%]RG34YNg1CO+me+P">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <value name="ARG4">
+                  <block type="math_number" id="VG:-TsP3Dc?Myh5E)Sls">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <value name="ARG5">
+                  <block type="math_number" id="2d*w1pXKIcSqd(az$9A7">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="SUBMARKET">
+      <block type="tradeOptions" id="x=V33~4Lb|(sLv`J[:Eb">
+        <field name="DURATIONTYPE_LIST">s</field>
+        <field name="CURRENCY_LIST">USD</field>
+        <value name="DURATION">
+          <shadow type="math_number" id="O*@58sDc=!cOO}*b2vf9">
+            <field name="NUM">58</field>
+          </shadow>
+        </value>
+        <value name="AMOUNT">
+          <shadow type="math_number" id="ml)25~7^q}3I9}vjf:%K">
+            <field name="NUM">1</field>
+          </shadow>
+          <block type="procedures_callreturn" id="$2}WokOzE]BYO8Gc9#?l">
+            <mutation name="FRUITFELLA's stake"></mutation>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="loader" id="5;^G?D@-ObIIcy8zgYd4" x="0" y="532">
+    <field name="URL">https://gist.githubusercontent.com/Fruitfella/cc22c35eca8de66e97bc8b418d34c99c/raw/0cbea96abdebe973a33fd15847f8e59365addbea/FRUITFELLA's%2520Martingale%2520ver.3.0.xml</field>
+  </block>
+  <block type="loader" id="hp1(6%3Ugooif~9+${(:" x="0" y="585">
+    <field name="URL">https://gist.githubusercontent.com/Fruitfella/a322926d20e9733ce1a9c070d60b6b77/raw/2f2cd40688a3e67e3be5fc6497aa8462d96b98fb/FRUITFELLA's%2520New%2520Candle.xml</field>
+  </block>
+  <block type="during_purchase" id="(4;NieXd}j|Bn!c-YiC|" x="0" y="638">
+    <statement name="DURING_PURCHASE_STACK">
+      <block type="controls_if" id="8?eYKAW%VczmRXQ-ou3r">
+        <value name="IF0">
+          <block type="check_sell" id="M=:_KpEeRAJY_}XTU^8~"></block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="before_purchase" id="i-CIx.(Onm4?ihxzA}Y]" x="0" y="763">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="controls_if" id="?fW9]3Htg|XKHRBrG0=v">
+        <value name="IF0">
+          <block type="logic_compare" id="1Zc|Pnt0r;+TJWO^}LqI">
+            <field name="OP">NEQ</field>
+            <value name="A">
+              <block type="variables_get" id="AfapfFELr[ayRGR?cphy">
+                <field name="VAR">start</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="c7gZjH0oLTeFogszn~uk">
+                <field name="TEXT">true</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if" id="jF3k[Q|;g/iM@gqgd]v8">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="procedures_callreturn" id="/3n7|aJaZp^4!Nc@+TvO">
+                <mutation name="candle is new"></mutation>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="notify" id="MsZ:LH2O3ngB2%Pa::CT">
+                <field name="NOTIFICATION_TYPE">info</field>
+                <field name="NOTIFICATION_SOUND">announcement</field>
+                <value name="MESSAGE">
+                  <shadow type="text" id="q3z[^sYF`$YC6`.*s04t">
+                    <field name="TEXT">abc</field>
+                  </shadow>
+                  <block type="text" id="apJroig$`L:E*:VjHpKB">
+                    <field name="TEXT">Purchase</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="purchase" id="W6q#Z-I3q3d[d3-`S[dS">
+                    <field name="PURCHASE_LIST">CALL</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="notify" id="$gRbSLL|M=W7=`YA@ZXz">
+                <field name="NOTIFICATION_TYPE">warn</field>
+                <field name="NOTIFICATION_SOUND">silent</field>
+                <value name="MESSAGE">
+                  <shadow type="text" id="q3z[^sYF`$YC6`.*s04t">
+                    <field name="TEXT">abc</field>
+                  </shadow>
+                  <block type="text" id="rtzL?tCY/iZB){4ZMn?)">
+                    <field name="TEXT">Candle not new</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <next>
+          <block type="variables_set" id="Tjcb4pn9U8h[I4~K?})#">
+            <field name="VAR">start</field>
+            <value name="VALUE">
+              <block type="text" id="QPkV]$[rMhHd`|raneUB">
+                <field name="TEXT">false</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="D^Jz1^n=2vtZku1vBN@;" x="0" y="1007">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="notify" id="Z`Dz!h^h:2#t31*D,;g#">
+        <field name="NOTIFICATION_TYPE">success</field>
+        <field name="NOTIFICATION_SOUND">silent</field>
+        <value name="MESSAGE">
+          <shadow type="text" id="q3z[^sYF`$YC6`.*s04t">
+            <field name="TEXT">abc</field>
+          </shadow>
+          <block type="text_join" id="GHJ9rpta.o:cV@c*7[Hp">
+            <mutation items="2"></mutation>
+            <value name="ADD0">
+              <block type="text" id="`5#Dy#%W~4H$Wz@|ca99">
+                <field name="TEXT">Contract entered at </field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="read_details" id="SD6X=8l4lXX2!(#DR9Y3">
+                <field name="DETAIL_INDEX">6</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="notify" id="xMLI/wAWEyl`Ixt[Hp7h">
+            <field name="NOTIFICATION_TYPE">success</field>
+            <field name="NOTIFICATION_SOUND">silent</field>
+            <value name="MESSAGE">
+              <shadow type="text" id="q3z[^sYF`$YC6`.*s04t">
+                <field name="TEXT">abc</field>
+              </shadow>
+              <block type="text_join" id="*9(v/8Pc0o]+-*~GWts1">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="5jgYQCzv$7t[7Q2uL7{8">
+                    <field name="TEXT">Contract expired at </field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="read_details" id="WkZNRb50YPhOPTM@,V.Q">
+                    <field name="DETAIL_INDEX">8</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="mvGp^(L69B1yy#~V9DI]">
+                <value name="IF0">
+                  <block type="procedures_callreturn" id="ir:?+SRu=(Y?_t2NIw[*">
+                    <mutation name="(4) FRUITFELLA Trade again">
+                      <arg name="put [Result is Win] here"></arg>
+                      <arg name="put [Contract Detail : profit] here"></arg>
+                    </mutation>
+                    <value name="ARG0">
+                      <block type="contract_check_result" id="v*+^/-UC[_R7n%;P3_Km">
+                        <field name="CHECK_RESULT">win</field>
+                      </block>
+                    </value>
+                    <value name="ARG1">
+                      <block type="read_details" id="uW6IjF19h=NvjQ1pEIWv">
+                        <field name="DETAIL_INDEX">4</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="controls_if" id="}xuq1VqVN#iE2+6BOlVK">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="contract_check_result" id="Y!B?|Mqw_s;^WsM^%ctq">
+                        <field name="CHECK_RESULT">win</field>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="notify" id="|V!pKTl=q)P~D@+t.MqG">
+                        <field name="NOTIFICATION_TYPE">success</field>
+                        <field name="NOTIFICATION_SOUND">earned-money</field>
+                        <value name="MESSAGE">
+                          <shadow type="text" id="q3z[^sYF`$YC6`.*s04t">
+                            <field name="TEXT">Win</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="trade_again" id="c)S|KjoQdXc8l#J@5z3P"></block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

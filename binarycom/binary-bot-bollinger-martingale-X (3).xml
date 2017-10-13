@@ -455,62 +455,42 @@
           </block>
         </value>
         <statement name="DO0">
-          <block type="controls_if" id="AURvVGe%+%(#8G_Y1k=m">
-            <value name="IF0">
-              <block type="contract_check_result" id="g,0MU9{-nkWg}EnUa!),">
-                <field name="CHECK_RESULT">win</field>
-              </block>
-            </value>
-            <statement name="DO0">
-              <block type="notify" id="egQO#RId*{iGoLblmz%z">
-                <field name="NOTIFICATION_TYPE">success</field>
-                <field name="NOTIFICATION_SOUND">earned-money</field>
-                <value name="MESSAGE">
-                  <shadow type="text" id="}sh9y0-.Vya-eX`.L[il">
-                    <field name="TEXT">Coin</field>
-                  </shadow>
-                </value>
-              </block>
-            </statement>
-            <next>
-              <block type="notify" id="G5$zX]/-Xmhxe(,j6~:e">
-                <field name="NOTIFICATION_TYPE">info</field>
-                <field name="NOTIFICATION_SOUND">silent</field>
-                <value name="MESSAGE">
-                  <shadow type="text" id="}sh9y0-.Vya-eX`.L[il">
-                    <field name="TEXT">abc</field>
-                  </shadow>
-                  <block type="text_join" id="rY~xsn_6F=#b3m-n?yyQ">
-                    <mutation items="4"></mutation>
-                    <value name="ADD0">
-                      <block type="text" id="z,nC1$JeYfQRzIA6cukE">
-                        <field name="TEXT">Contract period: </field>
-                      </block>
-                    </value>
-                    <value name="ADD1">
-                      <block type="read_details" id="J)PtB!g%/*#vi?gXj;Fc">
-                        <field name="DETAIL_INDEX">6</field>
-                      </block>
-                    </value>
-                    <value name="ADD2">
-                      <block type="text" id="o23mMc0)AjwJ*_%^cfoF">
-                        <field name="TEXT"> - </field>
-                      </block>
-                    </value>
-                    <value name="ADD3">
-                      <block type="read_details" id="05tnpOic?ODPI;n*l9SC">
-                        <field name="DETAIL_INDEX">8</field>
-                      </block>
-                    </value>
+          <block type="trade_again" id="Lg9.PR[K$`!@,EObuJ$="></block>
+        </statement>
+        <next>
+          <block type="notify" id="G5$zX]/-Xmhxe(,j6~:e">
+            <field name="NOTIFICATION_TYPE">info</field>
+            <field name="NOTIFICATION_SOUND">silent</field>
+            <value name="MESSAGE">
+              <shadow type="text" id="}sh9y0-.Vya-eX`.L[il">
+                <field name="TEXT">abc</field>
+              </shadow>
+              <block type="text_join" id="rY~xsn_6F=#b3m-n?yyQ">
+                <mutation items="4"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="z,nC1$JeYfQRzIA6cukE">
+                    <field name="TEXT">Contract period: </field>
                   </block>
                 </value>
-                <next>
-                  <block type="trade_again" id="Lg9.PR[K$`!@,EObuJ$="></block>
-                </next>
+                <value name="ADD1">
+                  <block type="read_details" id="J)PtB!g%/*#vi?gXj;Fc">
+                    <field name="DETAIL_INDEX">6</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="text" id="o23mMc0)AjwJ*_%^cfoF">
+                    <field name="TEXT"> - </field>
+                  </block>
+                </value>
+                <value name="ADD3">
+                  <block type="read_details" id="05tnpOic?ODPI;n*l9SC">
+                    <field name="DETAIL_INDEX">8</field>
+                  </block>
+                </value>
               </block>
-            </next>
+            </value>
           </block>
-        </statement>
+        </next>
       </block>
     </statement>
   </block>
