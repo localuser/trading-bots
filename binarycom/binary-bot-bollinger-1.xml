@@ -1,0 +1,134 @@
+﻿<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <block type="loader" id="8*/J|~pCeu@4+@nfT{I1" x="0" y="0">
+    <field name="URL">https://gist.githubusercontent.com/aminmarashi/7cd7be9f3ce9004de767f4d4f6a6c5a0/raw/is%2520candle%2520new.xml</field>
+  </block>
+  <block type="trade" id="Yt52~)Nf#vNGlE+qP/vI" x="0" y="53">
+    <field name="MARKET_LIST">volidx</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">R_100</field>
+    <field name="TRADETYPECAT_LIST">callput</field>
+    <field name="TRADETYPE_LIST">risefall</field>
+    <field name="TYPE_LIST">both</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">FALSE</field>
+    <field name="RESTARTONERROR">TRUE</field>
+    <statement name="SUBMARKET">
+      <block type="tradeOptions" id="tiG#s$UXZT8=iACkkP)s">
+        <field name="DURATIONTYPE_LIST">m</field>
+        <field name="CURRENCY_LIST">USD</field>
+        <value name="DURATION">
+          <block type="math_number" id="la;K[YSxm8hvB/h,FMur">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="AMOUNT">
+          <block type="math_number" id="^qN(g:sLxu7KK:p=!kT2">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_callreturn" id="}top{jr,tQPmr|T3YZg1" x="737" y="123">
+    <mutation name="binary::is new candle"></mutation>
+  </block>
+  <block type="before_purchase" id="KN1,f]4$QK5.HU-x8z.a" x="0" y="357">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="controls_if" id="t?2jI7h:=XjftkjKUjtZ">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="u}~oV+bf[MG+.Q:d)nkK">
+            <field name="OP">LT</field>
+            <value name="A">
+              <block type="bb" id="5F|:QiHb!1:[!BRs^q+|">
+                <field name="BBRESULT_LIST">1</field>
+                <value name="PERIOD">
+                  <shadow type="math_number" id="o_4X4qsBDSM^;vHWkIo(">
+                    <field name="NUM">14</field>
+                  </shadow>
+                </value>
+                <value name="UPMULTIPLIER">
+                  <shadow type="math_number" id=";p?i!f-*z71VBi4%D?L(">
+                    <field name="NUM">2</field>
+                  </shadow>
+                </value>
+                <value name="DOWNMULTIPLIER">
+                  <shadow type="math_number" id="pM:hT_=3bi@(29Ro]p:%">
+                    <field name="NUM">2</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="purchase" id="g:BKQ+hl@Q+dz9Bu{SS;">
+            <field name="PURCHASE_LIST">CALL</field>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="controls_if" id="mYMaY=Zj!bi*qF3wQkwH">
+            <value name="IF0">
+              <block type="logic_compare" id="xI@r]{36B*aN39Ga/o6$">
+                <field name="OP">NEQ</field>
+                <value name="A">
+                  <block type="variables_get" id="8oz}@MllhxY4Es9ewC}F">
+                    <field name="VAR">last result</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="text" id="mjFcfxkaAAE:5E#l]H3+">
+                    <field name="TEXT">WIN</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="purchase" id="a[eV./hmXC:;dr*VbM/f">
+                <field name="PURCHASE_LIST">CALL</field>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="read_ohlc_obj" id="Sz)=$n{Mb#v0,8+4upAW" x="570" y="375">
+    <field name="OHLCFIELD_LIST">high</field>
+  </block>
+  <block type="after_purchase" id="si+/*VwS7HpjJ^2f}|3g" x="0" y="573">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="controls_if" id="T:OB#jhbbKiBj!OvW~R*">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="contract_check_result" id="}I,%h*R43lliT%QzYNqC">
+            <field name="CHECK_RESULT">win</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="3g?QZ{:x;.jUsf;Y1W0N">
+            <field name="VAR">last result</field>
+            <value name="VALUE">
+              <block type="text" id="P1-ZmcHdW~{cbvuUb^~M">
+                <field name="TEXT">WIN</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="variables_set" id="lF@.DB2qAr83B:P-q=%X">
+            <field name="VAR">last result</field>
+            <value name="VALUE">
+              <block type="text" id="^D._oSE15y,lkqoJ#Mn#">
+                <field name="TEXT">LOSS</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <next>
+          <block type="trade_again" id="8LElz,B[r?0DxAy!IrI3"></block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

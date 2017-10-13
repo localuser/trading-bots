@@ -1,0 +1,429 @@
+﻿<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <block type="loader" id="?OXYOS^..L%5(?UHA,-S" x="0" y="0">
+    <field name="URL">https://gist.githubusercontent.com/aminmarashi/7cd7be9f3ce9004de767f4d4f6a6c5a0/raw/is%2520candle%2520new.xml</field>
+  </block>
+  <block type="loader" id="0c;)b1J!Z?M_zWjx_x9u" x="0" y="53">
+    <field name="URL">https://gist.githubusercontent.com/Fruitfella/cc22c35eca8de66e97bc8b418d34c99c/raw/0cbea96abdebe973a33fd15847f8e59365addbea/FRUITFELLA's%2520Martingale%2520ver.3.0.xml</field>
+  </block>
+  <block type="trade" id="73vWdDagX-YhN)CtN.3D" x="0" y="106">
+    <field name="MARKET_LIST">volidx</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">R_100</field>
+    <field name="TRADETYPECAT_LIST">callput</field>
+    <field name="TRADETYPE_LIST">risefall</field>
+    <field name="TYPE_LIST">both</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">FALSE</field>
+    <field name="RESTARTONERROR">TRUE</field>
+    <statement name="INITIALIZATION">
+      <block type="procedures_callnoreturn" id="p]$nG8vh2hM0wtx!5~y$">
+        <mutation name="(1) FRUITFELLA's Management">
+          <arg name="_Target_Profit_"></arg>
+          <arg name="_Stop_Loss_"></arg>
+          <arg name="_First_Stake_"></arg>
+          <arg name="_Martingale_Factor_"></arg>
+          <arg name="_Martingale_Level_"></arg>
+          <arg name="_Martingale_Start_After_"></arg>
+        </mutation>
+        <value name="ARG0">
+          <block type="math_number" id="taVvdvV80sI^R3ygSJU/">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+        <value name="ARG1">
+          <block type="math_number" id="WIP@{C,8CcO0NiJ:xJF]">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+        <value name="ARG2">
+          <block type="math_number" id="cnaNWp65;jD6)3;^%q,K">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="ARG3">
+          <block type="math_number" id="~au17YC1lg-bI]wd0*y/">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <value name="ARG4">
+          <block type="math_number" id="H[7WHFr4{X_p1C}=HM)A">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+        <value name="ARG5">
+          <block type="math_number" id="bkr%o!06E.:LF-!;87%[">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="J[#9A5;N@p**)LiICcmv">
+            <field name="VAR">BB_Period</field>
+            <value name="VALUE">
+              <block type="math_number" id="3wvR^v:j,#V[^3;8NVL}">
+                <field name="NUM">14</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id=")KJ/TXob-1,*R^d?T=tR">
+                <field name="VAR">BB_Stddev</field>
+                <value name="VALUE">
+                  <block type="math_number" id="bS_OlEi#c_61^B6Tq!{y">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="SUBMARKET">
+      <block type="tradeOptions" id="u7avJi$6PpK}[EBh)WE+">
+        <field name="DURATIONTYPE_LIST">m</field>
+        <field name="CURRENCY_LIST">USD</field>
+        <value name="DURATION">
+          <block type="math_number" id="0p-bjjEuB1k(LNWLaiS]">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="AMOUNT">
+          <block type="procedures_callreturn" id="*]Z2/mQR@a@{|HHb)s7A">
+            <mutation name="FRUITFELLA's stake"></mutation>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="tick_analysis" id="?p;mhJqEDJ*UYW~MQbU4" x="0" y="619">
+    <statement name="TICKANALYSIS_STACK">
+      <block type="controls_if" id="5JxDuUp1u1-2-9s*XaH]">
+        <value name="IF0">
+          <block type="procedures_callreturn" id="z%A.m,F$D,{wEL/J/[In">
+            <mutation name="binary::is new candle"></mutation>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="M^36^wo1Ysvy%IW8|8)/">
+            <field name="VAR">last_candle_bb_high</field>
+            <value name="VALUE">
+              <block type="variables_get" id="z2m5Q3ua.Xs/B0/:u1pB">
+                <field name="VAR">bb_high</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="i_)2]MS,:ylE$b;Jp7bm">
+                <field name="VAR">last_candle_bb_low</field>
+                <value name="VALUE">
+                  <block type="variables_get" id="5F=)AzJ(#G9wfycqr@Z)">
+                    <field name="VAR">bb_low</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="variables_set" id="p?qShmcIVa*s!UE/R$7#">
+            <field name="VAR">bb_high</field>
+            <value name="VALUE">
+              <block type="bb" id="1~aTBziVT5x~y,0Z3lv;">
+                <field name="BBRESULT_LIST">1</field>
+                <value name="INPUT">
+                  <block type="ohlc_values" id="8q/pD4.R8zxpLHC0Qo/,">
+                    <field name="OHLCFIELD_LIST">close</field>
+                    <field name="CANDLEINTERVAL_LIST">default</field>
+                  </block>
+                </value>
+                <value name="PERIOD">
+                  <shadow type="math_number" id="@^Mps{S$ekf7Bzsz9LN~">
+                    <field name="NUM">14</field>
+                  </shadow>
+                  <block type="variables_get" id="|$=0OdXl;0%]6T]I[v_}">
+                    <field name="VAR">BB_Period</field>
+                  </block>
+                </value>
+                <value name="UPMULTIPLIER">
+                  <shadow type="math_number" id="a^/`Tyb!`Mv,pnxkizA$">
+                    <field name="NUM">2</field>
+                  </shadow>
+                  <block type="variables_get" id="[Te.@wn-k)]!S3H73{,J">
+                    <field name="VAR">BB_Stddev</field>
+                  </block>
+                </value>
+                <value name="DOWNMULTIPLIER">
+                  <shadow type="math_number" id="ATe/bK)zMi/=@KTepq*#">
+                    <field name="NUM">2</field>
+                  </shadow>
+                  <block type="variables_get" id="N~;|U4x@Tc6CjEp^^-4v">
+                    <field name="VAR">BB_Stddev</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="4v|=JCb7K`=hoqZ62/km">
+                <field name="VAR">bb_low</field>
+                <value name="VALUE">
+                  <block type="bb" id="`;.1h3YUyif|FWe:zVW,">
+                    <field name="BBRESULT_LIST">2</field>
+                    <value name="INPUT">
+                      <block type="ohlc_values" id="r/@wF,@HE}oS3Cn5j+JY">
+                        <field name="OHLCFIELD_LIST">close</field>
+                        <field name="CANDLEINTERVAL_LIST">default</field>
+                      </block>
+                    </value>
+                    <value name="PERIOD">
+                      <shadow type="math_number" id="Xh.6C(FdcKz=Sm7I!d6*">
+                        <field name="NUM">14</field>
+                      </shadow>
+                      <block type="variables_get" id="A#^D1*-hkI{8:|.[s]Ue">
+                        <field name="VAR">BB_Period</field>
+                      </block>
+                    </value>
+                    <value name="UPMULTIPLIER">
+                      <shadow type="math_number" id="]YHR#*{A|][hZxip?0tz">
+                        <field name="NUM">2</field>
+                      </shadow>
+                      <block type="variables_get" id=".cfKTJ@Cc%uo1[erHGJ!">
+                        <field name="VAR">BB_Stddev</field>
+                      </block>
+                    </value>
+                    <value name="DOWNMULTIPLIER">
+                      <shadow type="math_number" id="p`J=uNMreS4,dok/^C2[">
+                        <field name="NUM">2</field>
+                      </shadow>
+                      <block type="variables_get" id="9C)%*MJN_Zo^1sP{1/oE">
+                        <field name="VAR">BB_Stddev</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="(3;bZg}6/*p`kE!B+6W?">
+                    <field name="VAR">last_candle_close</field>
+                    <value name="VALUE">
+                      <block type="lists_getIndex" id="lY$c:Q3PUyv)a1`BFlvE">
+                        <mutation statement="false" at="false"></mutation>
+                        <field name="MODE">GET</field>
+                        <field name="WHERE">LAST</field>
+                        <value name="VALUE">
+                          <block type="ohlc_values" id="2+U)xo)82EH|+6RVEQuA">
+                            <field name="OHLCFIELD_LIST">close</field>
+                            <field name="CANDLEINTERVAL_LIST">default</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="before_purchase" id="tOc)]Xd=cAm0aiy+-8(8" x="0" y="1070">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="controls_if" id="rYn-4c/_R;!@qf*ba`(O">
+        <value name="IF0">
+          <block type="procedures_callreturn" id="8#w!e$fnY+BEzoY8UZ-`">
+            <mutation name="binary::is new candle"></mutation>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if" id="W3?Ug/XHN=|kNzH!sCj=">
+            <mutation elseif="1" else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="KIoEgB6A9Cq*M^|]I^d9">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="variables_get" id="*a.n(o*g;R9;?{Oz;[rZ">
+                    <field name="VAR">last_candle_close</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="S@u~)mX!PL$Qb0p(L?VG">
+                    <field name="VAR">last_candle_bb_high</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="notify" id="?Q|mwLNbP@!CuY{%kLfo">
+                <field name="NOTIFICATION_TYPE">error</field>
+                <field name="NOTIFICATION_SOUND">announcement</field>
+                <value name="MESSAGE">
+                  <shadow type="text" id="iURCyhAfLy%U%DPCxem-">
+                    <field name="TEXT">Purchase fall</field>
+                  </shadow>
+                  <block type="text_join" id="K@c8$KoQ*k;RzXB.H@W+">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="heg|t*j$}=qvE!yuyqT5">
+                        <field name="TEXT">Purchase fall with bb_high at </field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="variables_get" id="cvJKC4??y;J~Up1,M(wV">
+                        <field name="VAR">bb_high</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="purchase" id="Q;`vp48|v7pG%t@W6`uQ">
+                    <field name="PURCHASE_LIST">PUT</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="logic_compare" id="6Hvo-eLq40Seqz]#zz#T">
+                <field name="OP">LT</field>
+                <value name="A">
+                  <block type="variables_get" id="G-FJ8QxG4D.-6sIs9etD">
+                    <field name="VAR">last_candle_close</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="1u?RE@T;grrEI;YAkA|3">
+                    <field name="VAR">last_candle_bb_low</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="notify" id="D;`%ii4yMyKhcPHJ8-/u">
+                <field name="NOTIFICATION_TYPE">success</field>
+                <field name="NOTIFICATION_SOUND">announcement</field>
+                <value name="MESSAGE">
+                  <shadow type="text" id="x$%SiIgCVebJ{zu:LEW=">
+                    <field name="TEXT">Purchase rise</field>
+                  </shadow>
+                  <block type="text_join" id="?p0?eVM*iH4:2F{Kig12">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="^i@9^W7EzBT{pYr]2n.D">
+                        <field name="TEXT">Purchase rise with bb_low at </field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="variables_get" id="K^=x4X0Z)Pqho#AqNmHb">
+                        <field name="VAR">bb_low</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="purchase" id="#]cJci~m5?qr5A7s]f`1">
+                    <field name="PURCHASE_LIST">CALL</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="notify" id="wD!~?2GOA!,gmMYL!_^C">
+                <field name="NOTIFICATION_TYPE">info</field>
+                <field name="NOTIFICATION_SOUND">silent</field>
+                <value name="MESSAGE">
+                  <shadow type="text" id="iJb35L6}tNnV8k[h#+Tz">
+                    <field name="TEXT">abc</field>
+                  </shadow>
+                  <block type="text_join" id="@zH,h^l%hGINhiKfMQfx">
+                    <mutation items="4"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="62j;@0Z2#(2!dUztx5kU">
+                        <field name="TEXT">lc_bb_low is </field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="variables_get" id="Wq0eTt%[^|Xgv+45Z1aN">
+                        <field name="VAR">last_candle_bb_low</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="text" id="s2)Z|=1?R$/@!BTLHv#?">
+                        <field name="TEXT">; last candle close is </field>
+                      </block>
+                    </value>
+                    <value name="ADD3">
+                      <block type="variables_get" id="*L?xG@W}_jJEU$f[],h{">
+                        <field name="VAR">last_candle_close</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="notify" id="F;Pk?Ybm^@|936ftUhJl">
+                    <field name="NOTIFICATION_TYPE">info</field>
+                    <field name="NOTIFICATION_SOUND">silent</field>
+                    <value name="MESSAGE">
+                      <shadow type="text" id="iJb35L6}tNnV8k[h#+Tz">
+                        <field name="TEXT">abc</field>
+                      </shadow>
+                      <block type="text_join" id="1~u7Ki*/B6R!Hi5yn,pS">
+                        <mutation items="4"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="TejIO0.5Buo}!Jm:%tL4">
+                            <field name="TEXT">lc_bb_high is </field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="variables_get" id="|9*x^[X{CA[wAqLYx(go">
+                            <field name="VAR">last_candle_bb_high</field>
+                          </block>
+                        </value>
+                        <value name="ADD2">
+                          <block type="text" id="I[O_HYx*ThMhT:9zfSM-">
+                            <field name="TEXT">; last candle close is </field>
+                          </block>
+                        </value>
+                        <value name="ADD3">
+                          <block type="variables_get" id="g/Y5E_`,:I,5W9k^GNXh">
+                            <field name="VAR">last_candle_close</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="during_purchase" id="@G%][.+GU_K^7%1dgfoR" x="0" y="1638"></block>
+  <block type="after_purchase" id="Vt,CkLeK8E?%BmnB`~M)" x="0" y="1725">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="controls_if" id="?3(Y)_J],/|W5=|bL#)$">
+        <value name="IF0">
+          <block type="procedures_callreturn" id="Xh|3{:y8.Ig+?KS=HX0:">
+            <mutation name="(4) FRUITFELLA Trade again">
+              <arg name="put [Result is Win] here"></arg>
+              <arg name="put [Contract Detail : profit] here"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="contract_check_result" id="5yC4$ZT^LQ8VTvFcCTy~">
+                <field name="CHECK_RESULT">win</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="read_details" id="XO9b_]{s~NK+Xk*_z#[y">
+                <field name="DETAIL_INDEX">4</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="trade_again" id="Lg9.PR[K$`!@,EObuJ$="></block>
+        </statement>
+        <next>
+          <block type="trade_again" id="h^qt8247FJ)5]C4TkNJ^"></block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
